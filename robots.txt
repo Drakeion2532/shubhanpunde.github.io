@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://drakeion2532.github.io/shubhanpunde.github.io/sitemap.xml
