@@ -260,3 +260,9 @@
     requestAnimationFrame(draw);
   }
 })();
+
+/* footer wordmark: reveal + hover trail */
+(()=>{const w=document.querySelector('.wordmark');if(!w)return;
+ if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{if(es[0].isIntersecting){w.classList.add('in');io.disconnect()}},{threshold:.35});io.observe(w)}else w.classList.add('in');
+ w.addEventListener('mouseover',ev=>{const s=ev.target;if(s.tagName!=='SPAN')return;[s.previousElementSibling,s.nextElementSibling].forEach(n=>{if(!n)return;n.classList.add('near');clearTimeout(n._t);n._t=setTimeout(()=>n.classList.remove('near'),420)})});
+})();
