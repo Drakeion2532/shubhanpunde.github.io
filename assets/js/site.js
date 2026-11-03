@@ -82,11 +82,14 @@
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
   const links = $$('.nav-links a');
   if (links.length) {
-    const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
-    const so = new IntersectionObserver(es => es.forEach(e => {
-      if (e.isIntersecting) { links.forEach(a => a.classList.remove('active')); const a = map.get(e.target.id); if (a) a.classList.add('active'); }
-    }), { rootMargin: '-45% 0px -50% 0px' });
-    map.forEach((_, id) => { const s = document.getElementById(id); if (s) so.observe(s); });
+    const secs = links.map(a => [a, document.getElementById(a.getAttribute('href').slice(1))]).filter(x => x[1]);
+    const mark = () => {
+      const y = innerHeight * 0.35; let cur = null;
+      for (const [a, s] of secs) if (s.getBoundingClientRect().top <= y) cur = a;
+      links.forEach(a => a.classList.toggle('active', a === cur));
+      if (cur) cur.setAttribute('aria-current', 'true'); links.forEach(a => { if (a !== cur) a.removeAttribute('aria-current'); });
+    };
+    addEventListener('scroll', mark, { passive: true }); addEventListener('resize', mark); mark();
   }
 
   /* ---------- project filters ---------- */
@@ -103,7 +106,13 @@
   /* ---------- lightbox ---------- */
   const lb = $('dialog.lb');
   if (lb) {
+    const qb = $('.qrbig', lb), li = $('img', lb);
+    $$('.badge .qr').forEach(b => b.addEventListener('click', () => {
+      if (!qb) return; qb.innerHTML = b.querySelector('svg').outerHTML; qb.hidden = false; li.hidden = true;
+      $('p', lb).textContent = 'Scan to verify the certificate'; lb.showModal();
+    }));
     $$('.shot img').forEach(img => img.addEventListener('click', () => {
+      if (qb) qb.hidden = true; li.hidden = false;
       $('img', lb).src = img.currentSrc || img.src; $('img', lb).alt = img.alt;
       $('p', lb).textContent = img.closest('figure')?.querySelector('figcaption')?.textContent || '';
       lb.showModal();
