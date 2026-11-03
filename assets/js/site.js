@@ -58,8 +58,8 @@
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (!e.isIntersecting) return;
     const el = e.target; el.classList.add('in'); io.unobserve(el);
-    if (!RM) $$('[data-count]', el).concat(el.matches('[data-count]') ? [el] : []).forEach(countUp);
-  }), { rootMargin: '0px 0px -8% 0px', threshold: .12 });
+    
+  }), { rootMargin: '0px 0px 12% 0px', threshold: 0 });
   $$('.rv, .bar, [data-count]').forEach(el => io.observe(el));
   $$('[data-stagger]').forEach(p => [...p.children].forEach((c, i) => c.style.setProperty('--i', i)));
 
