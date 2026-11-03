@@ -169,7 +169,7 @@
       for (const [lon, lat] of land) {
         const [x, y] = proj(lon, lat); if (x < -4 || x > w + 4 || y < -4 || y > h + 4) continue;
         const near = Math.hypot(lon - 73.9, lat - 18.5) < 9;
-        b.fillStyle = near ? 'rgba(255,138,92,.6)' : 'rgba(94,230,235,.3)';
+        b.fillStyle = near ? 'rgba(255,138,92,.6)' : 'rgba(94,230,235,.44)';
         b.beginPath(); b.arc(x, y, rad, 0, 6.283); b.fill();
       }
       // city markers
