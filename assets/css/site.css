@@ -347,20 +347,22 @@ a.card:hover{transform:translateY(-4px)}
 .pub .foot svg{width:18px;height:18px}
 .certs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .cert{padding:24px;border-radius:28px;background:var(--warm);border:1px solid var(--hair8);display:flex;flex-direction:column;gap:16px}
-.badge{position:relative;border-radius:12px;padding:16px 20px;height:156px;background:var(--warm2);border:1px solid var(--hair8);overflow:hidden}
-.badge .slot{position:absolute;left:50%;top:12px;width:48px;height:8px;margin-left:-24px;border-radius:999px;background:var(--on-var)}
+.badge{position:relative;border-radius:12px;padding:30px 16px 0;height:156px;background:var(--warm2);border:1px solid var(--hair8);overflow:hidden}
+.badge .slot{position:absolute;left:50%;top:10px;width:48px;height:8px;margin-left:-24px;border-radius:999px;background:var(--on-var)}
 .badge .bmeta{font:400 12px/16px var(--f-mono);color:var(--on);letter-spacing:0}
-.badge .nm{font:500 16px/24px var(--f-body);margin-top:26px}
-.badge .big{font:400 28px/36px var(--f-display);margin-top:14px}
+.badge .nm{font:500 16px/24px var(--f-body);margin-top:14px}
+.badge .nm+.id{margin-top:6px}
+.badge:has(.logo) .bmeta{padding-left:85px}
+.badge .big{font:400 28px/30px var(--f-display);margin-top:14px}
 .badge .id{font:400 12px/16px var(--f-mono);color:var(--on-var);letter-spacing:0}
-.badge .ver{display:flex;align-items:center;gap:4px;margin-top:10px;font:400 12px/16px var(--f-mono);color:var(--ok);letter-spacing:0}
+.badge .ver{display:flex;align-items:center;gap:4px;margin-top:16px;font:400 12px/16px var(--f-mono);color:var(--ok);letter-spacing:0}
 .badge .ver .dot{width:6px;height:6px}
-.badge .qr{position:absolute;right:16px;top:24px;width:84px;height:84px;border-radius:16px;background:var(--red);display:grid;place-items:center;cursor:zoom-in;border:0;padding:0;transition:transform .3s var(--ease)}
+.badge .qr{position:absolute;right:14px;top:34px;width:84px;height:84px;border-radius:16px;background:var(--red);display:grid;place-items:center;cursor:zoom-in;border:0;padding:0;transition:transform .3s var(--ease)}
 .badge .qr:hover{transform:scale(1.05)}
 .badge .qr span{width:72px;height:72px;border-radius:8px;background:var(--cream);display:grid;place-items:center}
 .badge .qr svg{width:64px;height:64px}
-.badge .tap{position:absolute;right:8px;top:114px;width:100px;text-align:center;font:400 12px/16px var(--f-mono);color:var(--soft2);letter-spacing:0}
-.badge .logo{position:absolute;left:20px;bottom:12px;background:#fff;border-radius:8px;padding:4px 8px}
+.badge .tap{position:absolute;right:14px;top:124px;width:101px;text-align:center;font:400 12px/16px var(--f-mono);color:var(--soft2);letter-spacing:0}
+.badge .logo{position:absolute;left:16px;top:24px;height:22px;background:#fff;border-radius:8px;padding:4px 8px;display:flex;align-items:center}
 .badge .logo img{height:14px;width:auto}
 .cert .t{display:flex;flex-direction:column;gap:8px}
 .cert .t b{font:500 16px/24px var(--f-body)}
@@ -648,3 +650,8 @@ dialog.lb[open]{animation:pop .35s var(--ease-out)}
   .d-cta,.sec-head-row,.pm-head{flex-direction:column;align-items:flex-start}
   .t-ato .big{font-size:110px}.c-card h2{font-size:52px;line-height:1}
 }
+
+.cert .t a.tlink{align-self:flex-start;margin-top:8px;display:inline-flex;align-items:center;gap:4px;color:var(--soft);font:500 14px/20px var(--f-body);text-decoration:none}
+.cert .t a.tlink:hover{text-decoration:underline}
+.cert .t a.tlink svg{width:18px;height:18px}
+.badge:has(img[src*=ibm]) .bmeta{padding-left:62px}
