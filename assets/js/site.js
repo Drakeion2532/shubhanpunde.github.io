@@ -161,7 +161,7 @@
     }
     const C = {
       pune: [73.86, 18.52, 'Pune'], mumbai: [72.88, 19.08, 'Mumbai'], blr: [77.59, 12.97, 'Bengaluru'], delhi: [77.21, 28.61, 'Delhi'],
-      doha: [51.53, 25.29, 'Doha'], kuwait: [47.98, 29.37, 'Kuwait City'], vegas: [-115.14, 36.17, 'Las Vegas'], london: [-0.13, 51.51, 'London'],
+      vegas: [-115.14, 36.17, 'Las Vegas'], london: [-0.13, 51.51, 'London'],
       ams: [4.9, 52.37, 'Amsterdam'], fra: [8.68, 50.11, 'Frankfurt'], moscow: [37.62, 55.76, 'Moscow'], kyiv: [30.52, 50.45, 'Kyiv'],
       sao: [-46.63, -23.55, 'São Paulo'], lagos: [3.38, 6.52, 'Lagos'], beijing: [116.4, 39.9, 'Beijing'], hk: [114.17, 22.32, 'Hong Kong'],
       sg: [103.82, 1.35, 'Singapore'], jakarta: [106.85, -6.21, 'Jakarta'], seoul: [126.98, 37.57, 'Seoul'], tokyo: [139.69, 35.69, 'Tokyo'],
@@ -169,7 +169,7 @@
       joburg: [28.05, -26.2, 'Johannesburg'], sydney: [151.21, -33.87, 'Sydney'], tehran: [51.39, 35.69, 'Tehran'], dubai: [55.27, 25.2, 'Dubai'],
       bucharest: [26.1, 44.43, 'Bucharest'], hanoi: [105.85, 21.03, 'Hanoi'], mexico: [-99.13, 19.43, 'Mexico City'], cairo: [31.24, 30.04, 'Cairo']
     };
-    const TARGETS = ['pune', 'pune', 'pune', 'mumbai', 'blr', 'delhi', 'doha', 'kuwait', 'vegas', 'london', 'nyc'];
+    const TARGETS = ['pune', 'pune', 'pune', 'mumbai', 'blr', 'delhi', 'sg', 'fra', 'vegas', 'london', 'nyc'];
     const SOURCES = Object.keys(C).filter(k => !['pune', 'mumbai', 'blr', 'delhi'].includes(k));
     const TYPES = [
       { n: 'credential stuffing', c: '#ff562d', o: 'blocked' },
