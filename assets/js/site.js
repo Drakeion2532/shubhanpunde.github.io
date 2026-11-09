@@ -3,7 +3,7 @@
   'use strict';
   /* Old GitHub Pages address → permanent home, keeping the page path */
   if (location.hostname === 'drakeion2532.github.io') {
-    location.replace('https://shubhanpunde.com' + location.pathname.replace(/^\/shubhanpunde\.github\.io/, '') + location.search + location.hash);
+    location.replace('https://shubhanpunde.vercel.app' + location.pathname.replace(/^\/shubhanpunde\.github\.io/, '') + location.search + location.hash);
     return;
   }
   const doc = document.documentElement;
