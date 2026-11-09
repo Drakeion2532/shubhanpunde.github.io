@@ -886,3 +886,38 @@ html,body{overflow-x:clip}
   .badge .tap{width:76px;font-size:9px}
 }
 dialog.lb,dialog.lb .lb-card{outline:none}
+
+/* ---------- Recheck pass ---------- */
+/* filter chips: hint that the row scrolls */
+@media (max-width:640px){
+  .filters{-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent);padding-right:40px}
+  /* contact: status pill and location wrap cleanly */
+  .c-card .status{height:auto;align-items:flex-start;border-radius:18px;padding:10px 14px;line-height:20px}
+  .c-card .status .dot{margin-top:6px;flex:none}
+  .c-card .loc{align-items:flex-start}
+  .c-card .loc svg{flex:none;margin-top:2px}
+  /* CGPA tile: no empty block on phones */
+  .cgpa{min-height:0;gap:40px;padding:24px}
+  .cgpa .num b{font-size:88px;line-height:84px}
+  /* method: shorter number panels */
+  .prin .stg{height:112px;padding:16px 20px}
+  .prin .num{font-size:88px;line-height:80px}
+  .prin .b{padding:20px 16px 16px}
+  /* hobbies: swipeable row instead of a 2-col grid with an orphan */
+  .hobbies{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:16px;margin-inline:-16px;padding:16px 16px 24px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .hobbies::-webkit-scrollbar{display:none}
+  .hob{flex:0 0 72%;scroll-snap-align:start}
+}
+/* tablets: no lonely last card */
+@media (min-width:641px) and (max-width:1240px){
+  .certs>:nth-child(3),.principles>:nth-child(3){grid-column:1/-1}
+  .hobbies{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:16px 0 24px}
+  .hobbies::-webkit-scrollbar{display:none}
+  .hob{flex:0 0 calc((100% - 32px)/3);scroll-snap-align:start}
+}
+@media (min-width:641px) and (max-width:900px){
+  .flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .flow li.arr{display:none}
+  .flow li.step:last-child{grid-column:1/-1}
+}
+@media (max-width:1240px){.js .hobbies .rv{opacity:1;transform:none}}
