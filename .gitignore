@@ -1,0 +1,12 @@
+# Never commit secrets or local tooling
+.env
+.env.*
+*.pem
+*.key
+.vercel/
+node_modules/
+
+# OS clutter
+.DS_Store
+Thumbs.db
+desktop.ini

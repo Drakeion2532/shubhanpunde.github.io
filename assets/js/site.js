@@ -1,6 +1,11 @@
 /* Shubhan Punde · portfolio · © 2026 Shubhan Punde. All rights reserved. Build sp2532-1bb845a51c97 */
 (() => {
   'use strict';
+  /* Old GitHub Pages address → permanent home, keeping the page path */
+  if (location.hostname === 'drakeion2532.github.io') {
+    location.replace('https://shubhanpunde.com' + location.pathname.replace(/^\/shubhanpunde\.github\.io/, '') + location.search + location.hash);
+    return;
+  }
   const doc = document.documentElement;
   doc.classList.add('js');
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
