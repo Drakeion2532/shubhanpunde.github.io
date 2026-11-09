@@ -595,12 +595,21 @@ a.card:hover{transform:translateY(-4px)}
 .pnav a.nx{text-align:right}
 
 /* lightbox */
-dialog.lb{border:0;padding:0;background:transparent;max-width:92vw;max-height:92vh}
+dialog.lb{border:0;padding:0;margin:auto;background:transparent;color:var(--on);max-width:calc(100vw - 32px);max-height:calc(100dvh - 32px);overflow:visible}
 dialog.lb::backdrop{background:rgba(7,8,10,.88);backdrop-filter:blur(6px)}
-dialog.lb img{max-width:92vw;max-height:86vh;border-radius:12px;background:#fff}
-dialog.lb .qrbig{width:min(70vh,480px);padding:32px;border-radius:16px;background:var(--cream)}
-dialog.lb .qrbig svg{width:100%;height:auto}
-dialog.lb p{color:var(--on-var);text-align:center;margin-top:12px;font-size:14px}
+.lb-card{display:flex;flex-direction:column;align-items:center;gap:16px;padding:16px;border-radius:28px;background:var(--s2);border:1px solid var(--hair8);box-shadow:0 32px 64px rgba(0,0,0,.6);max-height:calc(100dvh - 32px);overflow:auto}
+dialog.lb.is-qr .lb-card{width:min(400px,calc(100vw - 32px));padding:20px}
+.lb-top{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding-left:4px}
+.lb-top b{font:500 16px/24px var(--f-body);color:var(--on);min-width:0}
+.lb-close{flex:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:999px;border:1px solid var(--hair8);background:rgba(255,255,255,.06);color:var(--on);cursor:pointer}
+.lb-close:hover{border-color:var(--outline)}
+.lb-close svg{width:20px;height:20px}
+dialog.lb img{display:block;max-width:min(1200px,calc(100vw - 64px));max-height:calc(100dvh - 180px);border-radius:16px;background:#fff}
+dialog.lb .qrbig{width:100%;aspect-ratio:1;padding:clamp(14px,5vw,24px);border-radius:20px;background:var(--cream);box-sizing:border-box}
+dialog.lb .qrbig svg{display:block;width:100%;height:100%}
+dialog.lb p{color:var(--on-var);text-align:center;margin:0;font-size:14px;line-height:20px}
+dialog.lb p:empty{display:none}
+dialog.lb .lb-link{align-self:stretch;justify-content:center}
 dialog.lb[open]{animation:pop .35s var(--ease-out)}
 @keyframes pop{from{opacity:0;transform:scale(.96)}}
 
@@ -784,3 +793,96 @@ html,body{overflow-x:clip}
   .nav-pill>.btn svg{display:none}
   .pbar .btn svg{display:none}
 }
+
+/* ---------- Alignment pass (Nov 2026) ---------- */
+/* More builds: collapsible */
+.more{gap:0}
+.more-head{gap:24px;align-items:flex-start;flex-wrap:wrap}
+.more-title{display:flex;flex-direction:column;gap:6px;flex:1 1 420px;min-width:0}
+.more-title p{font:400 14px/20px var(--f-body);color:var(--on-var);max-width:640px}
+.more-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.more-toggle{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px 0 18px;border-radius:999px;border:1px solid var(--outline);background:var(--s3);color:var(--on);font:500 14px/20px var(--f-body);cursor:pointer;transition:border-color .2s,background .2s}
+.more-toggle:hover{border-color:var(--soft);background:var(--s4)}
+.more-toggle:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.more-toggle .chev{width:18px;height:18px;transform:rotate(180deg);transition:transform .35s var(--ease-out)}
+.more-toggle .lbl-open{display:none}
+.more.collapsed .more-toggle .lbl-open{display:inline}
+.more.collapsed .more-toggle .lbl-close{display:none}
+.more.collapsed .more-toggle .chev{transform:none}
+.more-body{display:grid;grid-template-rows:1fr;transition:grid-template-rows .5s var(--ease-out)}
+.more-inner{min-height:0;overflow:hidden;padding-top:24px;transition:padding-top .5s var(--ease-out)}
+.more.collapsed .more-body{grid-template-rows:0fr}
+.more.collapsed .more-inner{padding-top:0}
+.bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bcard .m{align-items:center}
+@media (prefers-reduced-motion:reduce){.more-body,.more-inner,.more-toggle .chev{transition:none}}
+
+/* Credential badges: QR in its own column, caption centred under it */
+.badge{height:auto;min-height:164px;padding:24px 16px 16px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto auto 1fr;column-gap:16px;align-items:start}
+.badge>.bhead,.badge>.nm,.badge>.big,.badge>.id,.badge>.ver{grid-column:1}
+.badge .nm,.badge .big{margin-top:10px}
+.badge .ver{margin-top:12px;align-self:end}
+.badge .qr{position:static;grid-column:2;grid-row:1/4;align-self:center;width:84px;height:84px;padding:6px;border-radius:14px;background:var(--cream);border:0;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 24px rgba(0,0,0,.45);outline:2px solid transparent;outline-offset:3px;transition:transform .3s var(--ease),outline-color .2s}
+.badge .qr:hover,.badge .qr:focus-visible{transform:scale(1.04);outline-color:var(--primary)}
+.badge .qr span{width:100%;height:100%;border-radius:8px;background:none}
+.badge .qr svg{width:100%;height:100%}
+.badge .tap{position:static;grid-column:2;grid-row:4;align-self:end;width:84px;text-align:center;font:500 10px/16px var(--f-mono);letter-spacing:.06em;white-space:nowrap;color:var(--soft2)}
+
+/* Flow steps: equal heights, arrows centred */
+.flow{align-items:stretch}
+.flow li.arr{display:flex;align-items:center}
+.flow li.step .tp{min-height:24px}
+
+/* Patient Mitra screens sit below the stage label */
+.screens3{padding-top:28px}
+
+@media (max-width:1240px){
+  .bgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  /* hero: terminal moves under the portrait so nothing overlaps */
+  .portrait{margin-bottom:112px}
+  .term{top:auto;bottom:-104px;left:0;right:0;width:auto}
+  /* logos: tidy 2-column grid */
+  .studied{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .studied .lbl,.studied .note{grid-column:1/-1}
+  .logo-tile{justify-content:center;height:64px}
+  .logo-tile img{max-width:100%;height:auto;max-height:36px}
+  /* daily stack: label on top, 4-up grid */
+  .stack{flex-direction:column;align-items:stretch;gap:16px;padding:20px}
+  .stack .lbl br{display:none}
+  .stack .lbl{white-space:nowrap}
+  .stack .lbl::after{content:''}
+  .stack ul{display:grid;grid-template-columns:repeat(4,1fr);row-gap:16px;justify-items:center}
+  /* roles: logo + name, date on its own line */
+  .role{padding:24px}
+  .role .top{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;row-gap:12px;align-items:center}
+  .role .date{grid-column:1/-1;justify-self:start;margin-left:0;white-space:nowrap}
+  .role h3{font-size:24px;line-height:30px}
+  /* case study */
+  .case{padding:24px 20px}
+  .case h3{font-size:28px;line-height:34px}
+  .case .tagc{height:auto;min-height:38px;align-items:flex-start;line-height:20px}
+  .case .tagc svg{flex:none;margin-top:1px}
+  .flow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .flow li.arr{display:none}
+  .flow li.step{min-height:0}
+  .flow li.step:last-child{grid-column:1/-1}
+  .metrics{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .metrics>div{min-width:0;padding:16px}
+  .metrics .v{font-size:36px;line-height:44px}
+  /* project stages */
+  .screens3{gap:10px;justify-content:center;padding-top:40px}
+  .screens3 img{width:30%;height:auto;aspect-ratio:114/240}
+  .screens3 img:nth-child(2){width:32%;height:auto}
+  /* more builds */
+  .more{padding:20px}
+  .more-actions{width:100%;justify-content:space-between}
+  .more-toggle{flex:1 1 auto;justify-content:center}
+  .bgrid{grid-template-columns:1fr}
+  /* credentials */
+  .cert{padding:16px}
+  .badge .qr{width:76px;height:76px}
+  .badge .tap{width:76px;font-size:9px}
+}
+dialog.lb,dialog.lb .lb-card{outline:none}

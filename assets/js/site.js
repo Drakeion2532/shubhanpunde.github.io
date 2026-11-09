@@ -97,6 +97,24 @@
     addEventListener('scroll', mark, { passive: true }); addEventListener('resize', mark); mark();
   }
 
+  /* ---------- More builds: collapsed until asked for ---------- */
+  const more = $('#more-builds');
+  if (more) {
+    const btn = $('.more-toggle', more), body = $('#more-body', more);
+    const setMore = open => {
+      more.classList.toggle('collapsed', !open);
+      btn.setAttribute('aria-expanded', String(open));
+      body.inert = !open;
+      if (open) $$('.rv', body).forEach(el => el.classList.add('in'));
+    };
+    setMore(false);
+    btn.addEventListener('click', () => {
+      const open = more.classList.contains('collapsed');
+      setMore(open);
+      if (!open) more.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+    });
+  }
+
   /* ---------- phone menu ---------- */
   const menuBtn = $('.menu-btn');
   if (menuBtn && nav) {
@@ -126,18 +144,23 @@
   /* ---------- lightbox ---------- */
   const lb = $('dialog.lb');
   if (lb) {
-    const qb = $('.qrbig', lb), li = $('img', lb);
+    const qb = $('.qrbig', lb), li = $('img', lb), cap = $('p', lb), ttl = $('#lb-title', lb), link = $('.lb-link', lb);
+    const open = (title, qr) => { lb.classList.toggle('is-qr', qr); if (ttl) ttl.textContent = title || 'Enlarged view'; lb.showModal(); };
     $$('.badge .qr').forEach(b => b.addEventListener('click', () => {
-      if (!qb) return; qb.innerHTML = b.querySelector('svg').outerHTML; qb.hidden = false; li.hidden = true;
-      $('p', lb).textContent = 'Scan to verify the certificate'; lb.showModal();
+      if (!qb) return;
+      const cert = b.closest('.cert'), a = cert && $('.t a', cert);
+      qb.innerHTML = b.querySelector('svg').outerHTML; qb.hidden = false; li.hidden = true;
+      cap.textContent = 'Scan with your phone camera to verify';
+      if (link) { link.hidden = !a; if (a) link.href = a.href; }
+      open(cert ? $('.t b', cert).textContent : 'Certificate', true);
     }));
     $$('.shot img').forEach(img => img.addEventListener('click', () => {
-      if (qb) qb.hidden = true; li.hidden = false;
-      $('img', lb).src = img.currentSrc || img.src; $('img', lb).alt = img.alt;
-      $('p', lb).textContent = img.closest('figure')?.querySelector('figcaption')?.textContent || '';
-      lb.showModal();
+      if (qb) qb.hidden = true; li.hidden = false; if (link) link.hidden = true;
+      li.src = img.currentSrc || img.src; li.alt = img.alt;
+      const fc = img.closest('figure')?.querySelector('figcaption')?.textContent || '';
+      cap.textContent = ''; open(fc || img.alt, false);
     }));
-    lb.addEventListener('click', () => lb.close());
+    lb.addEventListener('click', e => { if (e.target === lb || e.target.closest('.lb-close')) lb.close(); });
   }
 
   /* ---------- pipeline flow dots ---------- */
