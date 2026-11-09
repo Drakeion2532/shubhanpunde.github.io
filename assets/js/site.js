@@ -97,6 +97,21 @@
     addEventListener('scroll', mark, { passive: true }); addEventListener('resize', mark); mark();
   }
 
+  /* ---------- phone menu ---------- */
+  const menuBtn = $('.menu-btn');
+  if (menuBtn && nav) {
+    const setMenu = open => {
+      nav.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    links.forEach(a => a.addEventListener('click', () => setMenu(false)));
+    addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { setMenu(false); menuBtn.focus(); } });
+    document.addEventListener('click', e => { if (nav.classList.contains('open') && !nav.contains(e.target)) setMenu(false); });
+    matchMedia('(min-width: 1241px)').addEventListener('change', e => { if (e.matches) setMenu(false); });
+  }
+
   /* ---------- project filters ---------- */
   const fbtn = $$('.filters button');
   fbtn.forEach(b => b.addEventListener('click', () => {
