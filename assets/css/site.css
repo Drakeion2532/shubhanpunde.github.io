@@ -639,6 +639,13 @@ dialog.lb[open]{animation:pop .35s var(--ease-out)}
   .feed-track{animation:none}
 }
 
+/* 1241–1400px (e.g. 1920 screens at 150% scaling): keep two columns but leave room
+   for the terminal card, which overhangs the portrait by 92px, so it never leaves the screen */
+@media (min-width:1241px) and (max-width:1400px){
+  .hero-row{grid-template-columns:minmax(0,1fr) 440px;gap:48px;padding-right:92px}
+  .hero h1{font-size:76px}
+}
+
 /* narrow fallback (designed for desktop 1440) */
 @media (max-width:1240px){
   .hero-row,.exp,.edu,.d-hero,.two{grid-template-columns:1fr}
