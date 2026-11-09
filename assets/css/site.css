@@ -921,3 +921,14 @@ dialog.lb,dialog.lb .lb-card{outline:none}
   .flow li.step:last-child{grid-column:1/-1}
 }
 @media (max-width:1240px){.js .hobbies .rv{opacity:1;transform:none}}
+
+/* limits list markers */
+.ln2 p.b{position:relative;padding-left:20px}
+.ln2 p.b::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--amber)}
+/* phones: portrait leads the hero */
+@media (max-width:640px){
+  .hero-row{display:flex;flex-direction:column;gap:20px}
+  .hero-row .portrait{order:-1;width:100%;max-width:358px;aspect-ratio:1/1.04;margin:0 auto}
+  .hero-row .p-card img{object-position:50% 40%}
+  .hero-row .term{display:none}
+}
