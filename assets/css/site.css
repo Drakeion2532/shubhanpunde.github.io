@@ -397,7 +397,7 @@ a.card:hover{transform:translateY(-4px)}
 .prin a:hover{text-decoration:underline}
 
 /* offline */
-.hobbies{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;padding:24px 0}
+.hobbies{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;padding:24px 0}
 .hob{margin:0;padding:12px 12px 24px;border-radius:28px;background:var(--s1);border:1px solid var(--hair);display:flex;flex-direction:column;gap:12px}
 .hob .cv{position:relative;aspect-ratio:195/240;border-radius:16px;overflow:hidden;background:var(--s2)}
 .hob .cv img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}

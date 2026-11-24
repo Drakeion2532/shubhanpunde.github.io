@@ -1,10 +1,10 @@
 # shubhanpunde.github.io
 
-Source of Shubhan Punde's portfolio: IAM / IGA analyst and detection engineer.
+Source of Shubhan Punde's portfolio: IAM / IGA and SOC analyst (entry-level).
 
 **Live site:** https://shubhanpunde.vercel.app/
 
-- Landing page with a simulated live threat map, results, experience, 15 project case studies, research and credentials.
+- Landing page with a clearly labelled demo threat-map animation (simulated, not live data), results, experience, 15 project case studies, research and credentials.
 - Plain HTML, CSS and JavaScript. No build step, no trackers, no third-party requests; a strict Content-Security-Policy.
 - Designed in Figma first (Material 3 tokens, WCAG 2.2 AA contrast), desktop-first.
 

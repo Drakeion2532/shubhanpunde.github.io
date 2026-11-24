@@ -97,6 +97,10 @@
     addEventListener('scroll', mark, { passive: true }); addEventListener('resize', mark); mark();
   }
 
+  /* ---------- Threat feed: clone the items once so the marquee loops seamlessly ---------- */
+  const track = $('.feed-track');
+  if (track && !track.dataset.looped) { [...track.children].forEach(el => track.appendChild(el.cloneNode(true))); track.dataset.looped = '1'; }
+
   /* ---------- More builds: collapsed until asked for ---------- */
   const more = $('#more-builds');
   if (more) {
