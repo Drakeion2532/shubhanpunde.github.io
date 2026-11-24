@@ -932,3 +932,7 @@ dialog.lb,dialog.lb .lb-card{outline:none}
   .hero-row .p-card img{object-position:50% 40%}
   .hero-row .term{display:none}
 }
+
+/* links inside project tables and notes */
+.table td a,.notes a,.sec-head p a{color:var(--soft);text-decoration:underline;text-underline-offset:3px}
+.table td a:hover,.notes a:hover,.sec-head p a:hover{color:#fff}
