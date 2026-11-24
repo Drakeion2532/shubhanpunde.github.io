@@ -1,6 +1,6 @@
 # shubhanpunde.github.io
 
-Source of Shubhan Punde's portfolio: IAM / IGA and SOC analyst (entry-level).
+Source of Shubhan Punde's portfolio: IAM / IGA & SOC analyst (entry-level).
 
 **Live site:** https://shubhanpunde.vercel.app/
 
